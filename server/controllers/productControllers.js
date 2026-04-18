@@ -79,6 +79,23 @@ export const getBestSellers = async (req, res) => {
     }
 }
 
+//Get products from Top Brands section
+export const getTopBrandsProducts = async (req, res) => {
+    try {
+        const topBrands = ['adidas', 'nike', 'skechers', 'puma'];
+        const products = await Products.find({
+            brand: { $in: topBrands.map(brand => new RegExp(`^${brand}$`, 'i')) }
+        })
+            .sort({ reviews: -1 })
+            .limit(12);
+
+        return res.status(200).json(products);
+    } catch (err) {
+        console.error('Error fetching top-brand shoes:', err.message);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
 //Get search results
 export const searchProducts = async (req, res) => {
     try {

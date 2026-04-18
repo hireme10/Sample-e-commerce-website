@@ -10,8 +10,8 @@ const Home = () => {
             <GenInfo />
             <Brands />
             <div className='md:w-full md:max-w-full xs:mx-2  sm:mx-auto '>
-                <div className='prose prose-2xl'>
-                    <ShopBy title="Best Sellers" filter="bestSellers" />
+                <div className='mb-10'>
+                    <Brands title="Best Sellers" />
                 </div>
                 <div className='mb-10'>
                     <ShopBy title="Top Rated" filter="topRated" />

@@ -6,6 +6,7 @@ import {
     getByCategory,
     getProduct,
     getProducts,
+    getTopBrandsProducts,
     getTopRated,
     listOfProducts,
     searchProducts,
@@ -31,6 +32,9 @@ router.get('/filter/topRated', getTopRated);
 
 //Route to get best sellers
 router.get('/filter/bestSellers', getBestSellers)
+
+//Route to get top brands products
+router.get('/filter/topBrands', getTopBrandsProducts)
 
 //Route to search for an item
 router.get('/products/search', searchProducts)

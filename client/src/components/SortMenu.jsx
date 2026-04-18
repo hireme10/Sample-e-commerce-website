@@ -11,7 +11,8 @@ const SortMenu = forwardRef(({ products, setData, isVisible, setVisibility }, re
 
     const handleSort = (btn) => {
         const { value, order } = btn;
-        const sortedData = [...products].sort((a, b) => {
+        const safeProducts = Array.isArray(products) ? products : [];
+        const sortedData = [...safeProducts].sort((a, b) => {
             if (value === "sellPrice") {
                 return order === "1" ? a.sellPrice - b.sellPrice : b.sellPrice - a.sellPrice;
             }

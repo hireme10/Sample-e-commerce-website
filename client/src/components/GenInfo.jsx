@@ -48,7 +48,7 @@ const GenInfo = () => {
 
 export default GenInfo
 
-export const Brands = () => {
+export const Brands = ({ title = 'Top Brands', horizontal = false }) => {
     const navigate = useNavigate();
 
     const data = [
@@ -60,10 +60,11 @@ export const Brands = () => {
 
     return (
         <div className='flex flex-col items-center my-16 w-full'>
-            <p className='text-2xl font-bold mb-6'>Top Brands</p>
-            <div className='flex flex-wrap justify-center'>
+            <p className='text-2xl font-bold mb-6'>{title}</p>
+            <div className={`${horizontal ? 'w-full overflow-x-auto' : ''}`}>
+                <div className={`flex ${horizontal ? 'flex-nowrap justify-start px-2 md:px-0' : 'flex-wrap justify-center'} gap-4`}>
                 {data.map((elem, id) => (
-                    <div key={id} className='relative w-[340px] h-[340px] mx-2 mb-6 hover:text-white'>
+                    <div key={id} className={`relative ${horizontal ? 'w-[260px] h-[260px] shrink-0' : 'w-[340px] h-[340px] mx-2 mb-6'} hover:text-white`}>
                         <div className='absolute w-full flex justify-center items-center top-4  '>
                             <p className='logo font-semibold z-50 '>{elem.name}</p>
                         </div>
@@ -81,6 +82,7 @@ export const Brands = () => {
                         </button>
                     </div>
                 ))}
+                </div>
             </div>
         </div>
     );

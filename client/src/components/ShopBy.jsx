@@ -13,7 +13,7 @@ const ShopBy = ({ filter, title }) => {
             try {
                 const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/filter/${filter}`);
                 if (isMounted) {
-                    setProducts(res.data);
+                    setProducts(Array.isArray(res.data) ? res.data : []);
                     setLoading(false);
                 }
             } catch (err) {
@@ -29,7 +29,7 @@ const ShopBy = ({ filter, title }) => {
         return () => {
             isMounted = false;
         }
-    }, [])
+    }, [filter])
 
     return (
         <>
@@ -38,7 +38,7 @@ const ShopBy = ({ filter, title }) => {
                 {loading && <p>Loading...</p>}
                 {error && <p>Error while fetching: {error.message}</p>}
                 <div className='flex flex-nowrap space-x-4 '>
-                    {products.map(elem => (
+                    {(Array.isArray(products) ? products : []).map(elem => (
                         <HorSlider product={elem} key={elem._id} className="inline-block" home={true} />
                     ))}
                 </div>

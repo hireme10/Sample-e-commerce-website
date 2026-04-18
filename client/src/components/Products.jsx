@@ -5,14 +5,14 @@ import SortMenu from './SortMenu';
 import FilterMenu from './FilterMenu';
 
 const Products = ({ products, loading, error }) => {
-    const [data, setData] = useState(products);
+    const [data, setData] = useState(Array.isArray(products) ? products : []);
     const [sortMenuVisible, setSortMenuVisible] = useState(false);
     const [filterMenuVisible, setFilterMenuVisible] = useState(false);
     const sortMenuRef = useRef(null);
     const filterMenuRef = useRef(null);
 
     useEffect(() => {
-        setData(products);
+        setData(Array.isArray(products) ? products : []);
     }, [products]);
 
     useEffect(() => {
@@ -57,7 +57,7 @@ const Products = ({ products, loading, error }) => {
                 {loading ? <Loading /> : (
                     error ? <Error error={error} /> : (
                         data.length === 0 ? <p>No products Available</p> : (
-                            data.map((elem, i) => i < 30 && <ProductCard product={elem} key={elem._id} />)
+                            (Array.isArray(data) ? data : []).map((elem, i) => i < 30 && <ProductCard product={elem} key={elem._id} />)
                         )
                     )
                 )}

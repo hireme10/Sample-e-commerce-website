@@ -48,8 +48,8 @@ const Header = () => {
             <div className={`flex flex-col md:flex-row md:items-center ${isOpen ? 'block' : 'hidden md:flex'}`}>
                 {/* Links */}
                 <ul className='flex flex-col md:flex-row md:gap-4 md:pr-6'>
-                    {['/', '/shoes/men', '/shoes/women', '/shoes/kids'].map((path, index) => {
-                        const labels = ['Home', 'Men', 'Women', 'Kids'];
+                    {['/', '/shoes/men', '/shoes/women', '/shoes/kids', '/about-us'].map((path, index) => {
+                        const labels = ['Home', 'Men', 'Women', 'Kids', 'About Us'];
                         return (
                             <li key={path} className='hover:bg-slate-100 transition-all duration-300 delay-100 p-2 rounded'>
                                 <NavLink

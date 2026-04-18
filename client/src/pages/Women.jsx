@@ -13,7 +13,8 @@ const Women = () => {
             try {
                 const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/category/women`);
                 if (isMounted) {
-                    const sorted = res.data.sort((a, b) => parseInt(b.reviews) - parseInt(a.reviews))
+                    const payload = Array.isArray(res.data) ? res.data : [];
+                    const sorted = payload.sort((a, b) => parseInt(b.reviews) - parseInt(a.reviews))
                     setProducts(sorted);
                     setLoading(false);
                 }
