@@ -48,7 +48,7 @@ const GenInfo = () => {
 
 export default GenInfo
 
-export const Brands = () => {
+export const Brands = ({title="Top Brands"}) => {
     const navigate = useNavigate();
 
     const data = [
@@ -60,7 +60,7 @@ export const Brands = () => {
 
     return (
         <div className='flex flex-col items-center my-16 w-full'>
-            <p className='text-2xl font-bold mb-6'>Top Brands</p>
+            <p className='text-2xl font-bold mb-6'>{title}</p>
             <div className='flex flex-wrap justify-center'>
                 {data.map((elem, id) => (
                     <div key={id} className='relative w-[340px] h-[340px] mx-2 mb-6 hover:text-white'>

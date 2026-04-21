@@ -54,6 +54,7 @@ export const getByCategory = async (req, res) => {
 
 //Get top rated 
 export const getTopRated = async (req, res) => {
+    console.log("/filter/topRated inside")
     try {
         const topRatedShoes = await Products.find()
             .sort({ rating: -1 })
