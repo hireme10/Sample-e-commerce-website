@@ -12,6 +12,7 @@ const ShopBy = ({ filter, title }) => {
         const fetchData = async () => {
             try {
                 const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/filter/${filter}`);
+                console.log("url",`${import.meta.env.VITE_BASE_URL}/api/filter/${filter}`);
                 if (isMounted) {
                     setProducts(res.data);
                     setLoading(false);
