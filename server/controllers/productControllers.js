@@ -68,8 +68,10 @@ export const getTopRated = async (req, res) => {
 //Get best Sellers
 export const getBestSellers = async (req, res) => {
     try {
-        const products = await Products.find()
-            .sort({ reviews: -1 })
+        const products = await Products.find({
+            brand: { $in: ['Adidas', 'Nike', 'Skechers', 'Puma'] }
+        })
+            .sort({ rating: -1, reviews: -1 })
             .limit(12);
 
         return res.status(200).json(products);
