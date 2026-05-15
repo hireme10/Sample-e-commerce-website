@@ -13,7 +13,8 @@ const ShopBy = ({ filter, title }) => {
             try {
                 const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/filter/${filter}`);
                 if (isMounted) {
-                    setProducts(res.data);
+                   const productsList = Array.isArray(res.data) ? res.data : [];
+                    setProducts(productsList);
                     setLoading(false);
                 }
             } catch (err) {
