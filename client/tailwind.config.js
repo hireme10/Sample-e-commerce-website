@@ -20,6 +20,6 @@ export default {
       '2': '2px',
     },
   },
-  plugins: [require("tailwind-typography-cssstyle")],
+  // plugins: [require("tailwind-typography-cssstyle")],
 }
 
